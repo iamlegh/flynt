@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\ListComponents;
 
-use Flynt\FieldVariables;
+use Flynt\Utils\OptionsDeferred as Options;
 use Flynt\ComponentManager;
-use Flynt\Utils\Options;
+use Flynt\FieldVariables;
 use Parsedown;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function (array $data): array {
@@ -152,7 +152,7 @@ Options::addTranslatable('ListComponents', [
                 'label' => __('Code', 'flynt'),
                 'name' => 'code',
                 'type' => 'text',
-                'default_value' =>  __('Code', 'flynt'),
+                'default_value' => __('Code', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -162,7 +162,7 @@ Options::addTranslatable('ListComponents', [
                 'label' => __('Preview', 'flynt'),
                 'name' => 'preview',
                 'type' => 'text',
-                'default_value' =>  __('Preview', 'flynt'),
+                'default_value' => __('Preview', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',

@@ -1,4 +1,4 @@
-flynt-component[name='BlockImageText'] {
+flynt-component[name="BlockImageText"] {
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
       align-items: center;
@@ -11,11 +11,11 @@ flynt-component[name='BlockImageText'] {
         margin-block-start: 0;
       }
 
-      &[data-image-position='left'] {
+      &[data-image-position="left"] {
         flex-direction: row;
       }
 
-      &[data-image-position='right'] {
+      &[data-image-position="right"] {
         flex-direction: row-reverse;
       }
     }

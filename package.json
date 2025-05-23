@@ -29,11 +29,13 @@
     "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
+    "axios": "^1.9.0",
     "body-scroll-lock": "^3.1.5",
     "countup.js": "^2.8.0",
     "delegate-event-listener": "^1.2.0",
     "lazysizes": "^5.3.2",
     "rellax": "^1.12.1",
+    "sass-migrator": "^2.3.2",
     "swiper": "^11.1.1"
   },
   "devDependencies": {

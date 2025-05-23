@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\BlockPostFooter;
 
-use Flynt\Utils\Options;
+use Flynt\Utils\OptionsDeferred as Options;
 
 Options::addTranslatable('BlockPostFooter', [
     [

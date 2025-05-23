@@ -2,8 +2,8 @@
 
 namespace Flynt\Components\GridPostsLatest;
 
+use Flynt\Utils\OptionsDeferred as Options;
 use Flynt\FieldVariables;
-use Flynt\Utils\Options;
 use Timber\Timber;
 
 const POST_TYPE = 'post';

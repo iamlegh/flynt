@@ -21,7 +21,7 @@
   }
 
   [href]::after {
-    content: '('attr(href)')';
+    content: "(" attr(href) ")";
     display: inline;
   }
 
@@ -30,8 +30,9 @@
     max-inline-size: 100%;
   }
 
-  abbr[title]::after { /* stylelint-disable-line selector-no-qualifying-type */
-    content: '('attr(title)')';
+  abbr[title]::after {
+    /* stylelint-disable-line selector-no-qualifying-type */
+    content: "(" attr(title) ")";
   }
 
   /**
@@ -39,9 +40,9 @@
     * or use the `javascript:` pseudo protocol
     */
 
-  [href^='#']::after,
-  [href^='javascript:']::after {
-    content: '';
+  [href^="#"]::after,
+  [href^="javascript:"]::after {
+    content: "";
   }
 
   pre {

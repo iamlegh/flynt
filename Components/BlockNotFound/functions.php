@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\BlockNotFound;
 
-use Flynt\Utils\Options;
+use Flynt\Utils\OptionsDeferred as Options;
 
 Options::addTranslatable('BlockNotFound', [
     [

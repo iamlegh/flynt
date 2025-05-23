@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ListSearchResults;
 
-use Flynt\Utils\Options;
+use Flynt\Utils\OptionsDeferred as Options;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function (array $data): array {
     $data['uuid'] ??= wp_generate_uuid4();

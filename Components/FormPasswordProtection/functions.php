@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\FormPasswordProtection;
 
-use Flynt\Utils\Options;
+use Flynt\Utils\OptionsDeferred as Options;
 use Timber\Timber;
 
 add_filter('the_password_form', function (): string {

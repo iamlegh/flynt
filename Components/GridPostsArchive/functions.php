@@ -2,8 +2,8 @@
 
 namespace Flynt\Components\GridPostsArchive;
 
+use Flynt\Utils\OptionsDeferred as Options;
 use Flynt\FieldVariables;
-use Flynt\Utils\Options;
 use Timber\Timber;
 
 const POST_TYPE = 'post';
@@ -11,27 +11,41 @@ const FILTER_BY_TAXONOMY = 'category';
 
 add_filter('Flynt/addComponentData?name=GridPostsArchive', function (array $data): array {
     $data['uuid'] ??= wp_generate_uuid4();
-    $postType = POST_TYPE;
-    $taxonomy = FILTER_BY_TAXONOMY;
+
+    $postType = $data['postType'] ?? POST_TYPE;
+
+    // Si aucun post n'est fourni, on va les chercher automatiquement
+    if (empty($data['posts'])) {
+        $data['posts'] = Timber::get_posts([
+            'post_type' => $postType,
+            'post_status' => 'publish',
+            'posts_per_page' => 6,
+        ]);
+        error_log("[GridPostsArchive] Aucun post transmis, récupération auto de $postType");
+    }
+
+    // Taxonomie dynamique ou fallback
+    $taxonomy = $data['taxonomy'] ?? (get_object_taxonomies($postType)[0] ?? FILTER_BY_TAXONOMY);
+
     $terms = get_terms([
         'taxonomy' => $taxonomy,
         'hide_empty' => true,
     ]);
+
     $queriedObject = get_queried_object();
+
     if (count($terms) > 1) {
         $data['terms'] = array_map(function ($term) use ($queriedObject) {
             $timberTerm = Timber::get_term($term);
             if ($queriedObject->taxonomy ?? null) {
                 $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
             }
-
             return $timberTerm;
         }, $terms);
 
-        // Add item for all posts
         array_unshift($data['terms'], [
             'link' => get_post_type_archive_link($postType),
-            'title' => $data['labels']['allPosts'],
+            'title' => $data['labels']['allPosts'] ?? __('All', 'flynt'),
             'isActive' => is_home() || is_post_type_archive($postType),
         ]);
     }
@@ -40,9 +54,11 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function (array $data
         $data['isHome'] = true;
         $data['title'] = $queriedObject->post_title ?? get_bloginfo('name');
     } else {
-        $data['title'] =  get_the_archive_title();
+        $data['title'] = get_the_archive_title();
         $data['description'] = get_the_archive_description();
     }
+
+    error_log('[GridPostsArchive] Posts count: ' . count($data['posts'] ?? []));
 
     return $data;
 });

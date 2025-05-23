@@ -2,8 +2,8 @@
 
 namespace Flynt\Components\SliderImages;
 
+use Flynt\Utils\OptionsDeferred as Options;
 use Flynt\FieldVariables;
-use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=SliderImages', function (array $data): array {
     $data['sliderOptions'] = Options::getTranslatable('SliderOptions');

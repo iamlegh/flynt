@@ -3,7 +3,7 @@
 namespace Flynt\Components\NavigationMain;
 
 use Flynt\Utils\Asset;
-use Flynt\Utils\Options;
+use Flynt\Utils\OptionsDeferred as Options;
 use Timber\Timber;
 
 add_action('init', function (): void {

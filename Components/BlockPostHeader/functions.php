@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\BlockPostHeader;
 
-use Flynt\Utils\Options;
+use Flynt\Utils\OptionsDeferred as Options;
 
 add_filter('Flynt/addComponentData?name=BlockPostHeader', function (array $data): array {
     $data['dateFormat'] = get_option('date_format');
